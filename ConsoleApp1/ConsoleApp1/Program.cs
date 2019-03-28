@@ -8,12 +8,12 @@ namespace ConsoleApp1
 {
     class time
     {
-        public int hours = 10; 
-        public int minutes = 15; 
-        public int seconds = 23; 
-        public void Sety(int hours_, int minutes_, int seconds_) 
+        public int hours = 10;
+        public int minutes = 15;
+        public int seconds = 23;
+        public void Sety(int hours_, int minutes_, int seconds_)
         {
-            int i=0;
+            int i = 0;
             hours += hours_;
             minutes += minutes_;
             seconds += seconds_;
@@ -35,114 +35,188 @@ namespace ConsoleApp1
                 hours = hours % 24;
             }
         }
-        public int hour
+        public void set1(int hours_)
         {
-            set
-            {
-                try
-                {
-                    if (value > 24)
-                        throw new ArgumentOutOfRangeException("value", value.ToString(), "Ошибка!\nЧасы должны быть меньше 24ч");
-                    hours = value;                  
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-            }
-            get
-            {
-                return (hours);
-            }
+            hours = hours_;
         }
-        public int mine
+        public void set2(int minutes_)
         {
-            set
-            {
-                try
-                {
-                    if (value > 60)
-                        throw new ArgumentOutOfRangeException("value", value.ToString(), "Ошибка!\nМинуты должны быть меньше 60");
-                    minutes = value;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-            }
-            get
-            {
-                return (minutes);
-            }
+            minutes = minutes_;
         }
-        public int sec
+        public void set3(int seconds_)
         {
-            set
-            {
-                try
-                {
-                    if (value > 60)
-                        throw new ArgumentOutOfRangeException("value", value.ToString(), "Ошибка!\nСекунды должны быть меньше 60");
-                    seconds = value;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-            }
-            get
-            {
-                return (seconds);
-            }
+            seconds = seconds_;
         }
-    }
-    class Program
-    {
-        static void Main(string[] args)
+
+        public int hours1(int hours)
         {
-            int h,m,s, p;
             string buf;
-            time x = new time();
-            for (; ; )
+            int z;
+            int start;
+            do
             {
-                Console.WriteLine("Время: " + x.hours + ":" + x.minutes + ":" + x.seconds);
-                Console.WriteLine("Выберите пункт меню:\n1.Указать новое время\n2.Сместить время.");
-                buf = Console.ReadLine();
-                p = Convert.ToInt32(buf);
-                switch (p)
+                z = 0;
+
+                try
                 {
-                    case 1:
-                        Console.Write("Укажите час ");
-                        buf = Console.ReadLine();
-                        h = Convert.ToInt32(buf);
-                        x.hour = h;
-                        Console.Write("Укажите минуты ");
-                        buf = Console.ReadLine();
-                        m = Convert.ToInt32(buf);
-                        x.mine = m;
-                        Console.Write("Укажите секунды ");
-                        buf = Console.ReadLine();
-                        s = Convert.ToInt32(buf);
-                        x.sec = s;
-                        break;
-                    case 2:
-                        Console.Write("Укажите час ");
-                        buf = Console.ReadLine();
-                        h = Convert.ToInt32(buf);
-                        Console.Write("Укажите минуты ");
-                        buf = Console.ReadLine();
-                        m = Convert.ToInt32(buf);
-                        Console.Write("Укажите секунды ");
-                        buf = Console.ReadLine();
-                        s = Convert.ToInt32(buf);
-                        x.Sety(h, m, s);
-                        break;
-                    default:
-                    Console.WriteLine("Ошибка\nНесуществующий пункт меню");
-                    break;
+                    start = hours;
+                    buf = Console.ReadLine();
+                    hours = Convert.ToInt32(buf);
+
+
+                    if (hours > 24 || hours < 0)
+                    {
+                        Console.WriteLine("Ошибка! Число должно быть больше 0 и меньше 24");
+                        hours = start;
+                        z = 1;
+                    }
+                    else
+                    {
+                        z = 0;
+                    }
+
+
+
+
                 }
-                //Console.Clear();
+                catch
+                {
+                    Console.WriteLine("Ошибка! Некоректный ввод.");
+                    z = 1;
+                }
+            } while (z == 1);
+
+            return (hours);
+
+
+        }
+        public int min1(int min)
+        {
+            string buf;
+            int z;
+            int start;
+            do
+            {
+                z = 0;
+
+                try
+                {
+                    start = min;
+                    buf = Console.ReadLine();
+                    min = Convert.ToInt32(buf);
+
+
+                    if (min > 60 || min < 0)
+                    {
+                        Console.WriteLine("Ошибка! Число должно быть больше 0 и меньше 60");
+                        min = start;
+                        z = 1;
+                    }
+                    else
+                    {
+                        z = 0;
+                    }
+
+
+
+
+                }
+                catch
+                {
+                    Console.WriteLine("Ошибка! Некоректный ввод.");
+                    z = 1;
+                }
+            } while (z == 1);
+
+            return (min);
+
+
+        }
+        public int sec1(int sec)
+        {
+            string buf;
+            int z;
+            int start;
+            do
+            {
+                z = 0;
+
+                try
+                {
+                    start = sec;
+                    buf = Console.ReadLine();
+                    sec = Convert.ToInt32(buf);
+
+
+                    if (sec > 60 || sec < 0)
+                    {
+                        Console.WriteLine("Ошибка! Число должно быть больше 0 и меньше 60");
+                        sec = start;
+                        z = 1;
+                    }
+                    else
+                    {
+                        z = 0;
+                    }
+
+
+
+
+                }
+                catch
+                {
+                    Console.WriteLine("Ошибка! Некоректный ввод.");
+                    z = 1;
+                }
+            } while (z == 1);
+
+            return (sec);
+
+
+        }
+    }
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                int h = 0, m = 0, s = 0, p;
+                string buf;
+                time x = new time();
+                for (; ; )
+                {
+                    Console.WriteLine("Время: " + x.hours + ":" + x.minutes + ":" + x.seconds);
+                    Console.WriteLine("Выберите пункт меню:\n1.Указать новое время\n2.Сместить время.");
+                    buf = Console.ReadLine();
+                    p = Convert.ToInt32(buf);
+                    switch (p)
+                    {
+                        case 1:
+                            Console.Write("Укажите час ");
+                            x.set1(x.hours1(h));
+                            Console.Write("Укажите минуты ");
+                            x.set2(x.min1(m));
+                            Console.Write("Укажите секунды ");
+                            x.set3(x.sec1(s));
+                            break;
+                        case 2:
+                            Console.Write("Укажите час ");
+                            buf = Console.ReadLine();
+                            h = Convert.ToInt32(buf);
+                            Console.Write("Укажите минуты ");
+                            buf = Console.ReadLine();
+                            m = Convert.ToInt32(buf);
+                            Console.Write("Укажите секунды ");
+                            buf = Console.ReadLine();
+                            s = Convert.ToInt32(buf);
+                            x.Sety(h, m, s);
+                            break;
+                        default:
+                            Console.WriteLine("Ошибка\nНесуществующий пункт меню");
+                            break;
+                    }
+                    //Console.Clear();
+                }
             }
         }
     }
-}
+
